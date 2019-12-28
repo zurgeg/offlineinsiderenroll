@@ -21,11 +21,11 @@ restart your machine to enable *Microsoft Flight Signing* which is required by
 *Windows Insider Program*.
 
 **Notice:** Windows Insider Program requires telemetry to be set to *Full*.
-This script changes your telemetry settings to reflect this during the process
-of enabling *Windows Insider Program* access. If you have used any "privacy"
-scripts or changed *Allow telemetry* via Group Policy, changes made by this
-script may not get reflected and you may not be able to receive *Insider
-Preview* builds using Windows Update.
+After enrolling your machine to the *Windows Insider Program* please make sure
+that your diagnostic data collection settings are set to *Full*. Some *Insider
+Preview* builds may not get offered in *Windows Update* if you do not have
+correct telemetry settings. You can verify or modify your telemetry settings in
+*Settings* > *Privacy* > *Diagnostics & feedback*.
 
 #### Restoring Windows Insider Program to default options
 To restore *Windows Insider Program* to default settings simply choose `Stop
