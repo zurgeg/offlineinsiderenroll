@@ -49,25 +49,26 @@ if /I "[%choice%]"=="[x]" goto :STOP_INSIDER
 if /I "[%choice%]"=="[q]" goto :EOF
 goto :CHOICE_MENU
 
+
 :ENROLL_RP
 set "SLS=RingPreview"
 set "Ring=RP"
 set "Content=Current"
-set "FancyRing=Release Preview"
+set "FancyRing=Release Preview Channel"
 goto :ENROLL
 
 :ENROLL_SLOW
 set "SLS=RingInsiderSlow"
 set "Ring=WIS"
 set "Content=Active"
-set "FancyRing=Windows Insider Slow"
+set "FancyRing=Beta Channel"
 goto :ENROLL
 
 :ENROLL_FAST
 set "SLS=RingInsiderFast"
 set "Ring=WIF"
 set "Content=Active"
-set "FancyRing=Windows Insider Fast"
+set "FancyRing=Dev Channel"
 goto :ENROLL
 
 :RESET_INSIDER_CONFIG
@@ -95,6 +96,9 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" /t
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" /t REG_DWORD /v UIDisabledElements /d 65535 /f >NUL 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" /t REG_DWORD /v UIServiceDrivenElementVisibility /d 0 /f >NUL 2>&1
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility" /t REG_DWORD /v UIErrorMessageVisibility /d 192 /f >NUL 2>&1
+echo The changes have been applied.
+set /p choice="Do you want to disable the Windows Insider watermark? (y/n)"
+if /I "[%choice%]"=="[y]" reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation" /t REG_DWORD /v NotificationDisabled /d 1 /f >NUL >2&1 
 
 bcdedit /set {current} flightsigning yes >NUL 2>&1
 echo Done.
